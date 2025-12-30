@@ -7,10 +7,11 @@ import { Navigate, useNavigate } from "react-router-dom";
 export const Featured = () => {
   const [products, setProducts] = useState([]);
   const naviagate = useNavigate();
+  const API = import.meta.env.VITE_API_URL;
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/products");
+      const res = await axios.get(`${API}/api/products`);
       const bestproducts = res.data.products;
       setProducts(bestproducts.slice(0, 5));
     } catch (err) {

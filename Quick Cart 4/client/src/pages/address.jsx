@@ -10,6 +10,7 @@ export const Address = () => {
   const { token } = useContext(AuthContext);
   const navigate = useNavigate();
   const { id } = useParams();
+  const API = import.meta.env.VITE_API_URL;
 
   const [loading, setLoading] = useState(false);
   const [initialValues, setInitialValues] = useState({
@@ -38,7 +39,7 @@ export const Address = () => {
     if (!id) return;
 
     axios
-      .get(`http://localhost:3000/api/address/${id}`, {
+      .get(`${API}/api/address/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -61,14 +62,14 @@ export const Address = () => {
     setLoading(true);
     try {
       if (id) {
-        await axios.put(`http://localhost:3000/api/address/${id}`, values, {
+        await axios.put(`${API}/api/address/${id}`, values, {
           headers: { Authorization: `Bearer ${token}` },
         });
         toast.success("Address updated successfully");
         navigate("/alladdress");
         return;
       } else {
-        await axios.post("http://localhost:3000/api/address", values, {
+        await axios.post(`${API}/api/address`, values, {
           headers: { Authorization: `Bearer ${token}` },
         });
         toast.success("Address saved successfully");

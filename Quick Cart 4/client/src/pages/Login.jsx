@@ -12,7 +12,7 @@ import { GoogleLogin } from "@react-oauth/google";
 export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const API = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
 
@@ -32,7 +32,7 @@ export const Login = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:3000/api/login", {
+      const response = await axios.post(`${API}/api/login`, {
         email: values.email,
         password: values.password,
       });
@@ -59,7 +59,7 @@ export const Login = () => {
   const handleGoogleLogin = async (credentialResponse) => {
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/google-login",
+        `${API}/api/google-login`,
         {
           token: credentialResponse.credential,
         }

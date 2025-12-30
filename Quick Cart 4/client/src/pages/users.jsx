@@ -5,12 +5,13 @@ import { toast } from "react-toastify";
 export const Users = () => {
   const [users, setUsers] = useState([]);
 const [isLoading, setisLoading] = useState(true);
+const API = import.meta.env.VITE_API_URL;
 
   const token = localStorage.getItem("adminToken");
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/users", {
+      const res = await axios.get(`${API}/api/users`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -33,7 +34,7 @@ const [isLoading, setisLoading] = useState(true);
   const handleBlock = async (userId, currentStatus) => {
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/block",
+        `${API}/api/block`,
         {
           userId,
           block: !currentStatus, 
@@ -158,7 +159,7 @@ const [isLoading, setisLoading] = useState(true);
               >
                 <div className="w-32 h-32 overflow-hidden rounded-full border border-gray-300 mb-4">
                   <img
-                    src={`http://localhost:3000/${user.image}`}
+                    src={`${API}/${user.image}`}
                     alt={user.username}
                     className="w-full h-full object-cover"
                   />

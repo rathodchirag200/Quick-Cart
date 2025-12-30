@@ -6,6 +6,7 @@ export const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [refundLoadingId, setRefundLoadingId] = useState(null);
+  const API = import.meta.env.VITE_API_URL;
 
   const token = localStorage.getItem("adminToken");
 
@@ -13,7 +14,7 @@ export const Orders = () => {
     const fetchOrders = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:3000/api/orders/allorders"
+          `${API}/api/orders/allorders`
         );
         setOrders(res.data.orders);
       } catch (err) {
@@ -29,7 +30,7 @@ export const Orders = () => {
   const handleOrderStatus = async (id, newStatus) => {
     try {
       const res = await axios.put(
-        `http://localhost:3000/api/orders/${id}`,
+        `${API}/api/orders/${id}`,
         { orderStatus: newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -50,7 +51,7 @@ export const Orders = () => {
       setRefundLoadingId(id);
 
       await axios.post(
-        `http://localhost:3000/api/payment/refund/${id}`,
+        `${API}/api/payment/refund/${id}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );

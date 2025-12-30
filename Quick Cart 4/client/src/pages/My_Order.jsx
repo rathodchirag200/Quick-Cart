@@ -8,11 +8,12 @@ export const My_Order = () => {
   const [orders, setOrders] = useState([]);
   const { token } = useContext(AuthContext);
   const admintoken = localStorage.getItem("adminToken");
+  const API = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchUserOrders = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/orders", {
+        const res = await axios.get(`${API}/api/orders`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setOrders(res.data.order);
@@ -26,7 +27,7 @@ export const My_Order = () => {
   const handleorderstatus = async (id, newStatus) => {
     try {
       const res = await axios.put(
-        `http://localhost:3000/api/cancelorder/${id}`,
+        `${API}/api/cancelorder/${id}`,
         { orderStatus: newStatus },
         {
           headers: { Authorization: `Bearer ${token}` },

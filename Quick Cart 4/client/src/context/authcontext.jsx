@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [forgotEmail, setForgotEmail] = useState("");
+  const API = import.meta.env.VITE_API_URL;
 
   const logout = () => {
     setUser(null);
@@ -30,7 +31,7 @@ export const AuthProvider = ({ children }) => {
       }
 
       try {
-        const res = await axios.get("http://localhost:3000/api/currentuser", {
+        const res = await axios.get(`${API}/api/currentuser`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 

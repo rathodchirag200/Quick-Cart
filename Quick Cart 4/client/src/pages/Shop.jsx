@@ -12,6 +12,7 @@ export const Shop = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [category, setCategory] = useState([]);
+  const API = import.meta.env.VITE_API_URL;
 
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ export const Shop = () => {
       setLoading(true);
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/products?page=${currentPage}&search=${searchItem}&category=${category}`
+          `${API}/api/products?page=${currentPage}&search=${searchItem}&category=${category}`
         );
         setProducts(res.data.products);
         setTotalPages(res.data.totalPages);

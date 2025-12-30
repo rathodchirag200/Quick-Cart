@@ -10,6 +10,7 @@ export const Changepassword = () => {
   const { token } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const API = import.meta.env.VITE_API_URL;
 
   const validationSchema = Yup.object({
     oldPassword: Yup.string()
@@ -29,7 +30,7 @@ export const Changepassword = () => {
     setLoading(true);
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/change-password",
+        `${API}/api/change-password`,
         values,
         { headers: { Authorization: `Bearer ${token}` } }
       );

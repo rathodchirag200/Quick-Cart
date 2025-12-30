@@ -10,6 +10,7 @@ export const Reset = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const API = import.meta.env.VITE_API_URL;
 
   const { forgotEmail, setForgotEmail } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -30,13 +31,13 @@ export const Reset = () => {
       setLoading(true);
 
       const verifyRes = await axios.post(
-        "http://localhost:3000/api/verifyotp",
+        `${API}/api/verifyotp`,
         { email: forgotEmail, otp }
       );
 
       if (verifyRes.data.success) {
         const resetRes = await axios.post(
-          "http://localhost:3000/api/reset-password",
+          `${API}/api/reset-password`,
           {
             email: forgotEmail,
             otp,

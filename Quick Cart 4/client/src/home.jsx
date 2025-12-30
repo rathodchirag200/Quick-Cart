@@ -10,6 +10,7 @@ export const Home = () => {
   const [images, setImages] = useState([]);
   const { id: editId } = useParams();
   const navigate = useNavigate();
+  const API = import.meta.env.VITE_API_URL;
   const [initialValues, setInitialValues] = useState({
     name: "",
     compny: "",
@@ -31,7 +32,7 @@ export const Home = () => {
     if (editId) {
       const token = localStorage.getItem("adminToken");
       axios
-        .get(`http://localhost:3000/api/products/${editId}`, {
+        .get(`${API}/api/products/${editId}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {
@@ -118,7 +119,7 @@ export const Home = () => {
 
       if (editId) {
         await axios.put(
-          `http://localhost:3000/api/products/${editId}`,
+          `${API}/api/products/${editId}`,
           formData,
           {
             headers: {
@@ -133,7 +134,7 @@ export const Home = () => {
         }, 500);
         return;
       } else {
-        await axios.post("http://localhost:3000/api/addproducts", formData, {
+        await axios.post(`${API}/api/addproducts`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token}`,

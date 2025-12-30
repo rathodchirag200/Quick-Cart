@@ -10,6 +10,7 @@ export const WishlistProvider = ({ children }) => {
   const { token, logout } = useContext(AuthContext);
   const [wishlist, setWishlist] = useState([]);
   const navigate = useNavigate();
+  const API = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     if (!token) {
@@ -22,7 +23,7 @@ export const WishlistProvider = ({ children }) => {
 
   const loadWishlist = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/mywishlist", {
+      const res = await axios.get(`${API}/api/mywishlist`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -50,7 +51,7 @@ const toggleWishlist = async (productId) => {
   try {
     if (wishlist.includes(pid)) {
       await axios.post(
-        "http://localhost:3000/api/remove",
+        `${API}/api/remove`,
         { productId: pid },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -59,7 +60,7 @@ const toggleWishlist = async (productId) => {
       toast.info("Removed from wishlist");
     } else {
       await axios.post(
-        "http://localhost:3000/api/add",
+        `${API}/api/add`,
         { productId: pid },
         { headers: { Authorization: `Bearer ${token}` } }
       );

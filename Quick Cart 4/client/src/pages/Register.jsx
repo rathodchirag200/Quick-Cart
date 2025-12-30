@@ -13,6 +13,7 @@ import { AuthContext } from "../context/authcontext";
 export const Register = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
+  const API = import.meta.env.VITE_API_URL;
 
   const [initialValues, setInitialValues] = useState({
     username: "",
@@ -57,7 +58,7 @@ export const Register = () => {
 
       try {
         const response = await axios.post(
-          "http://localhost:3000/api/register",
+          `${API}/api/register`,
           formdata,
           { headers: { "Content-Type": "multipart/form-data" } }
         );
@@ -101,7 +102,7 @@ export const Register = () => {
   const handleGoogleLogin = async (credentialResponse) => {
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/google-login",
+        `${API}/api/google-login`,
         {
           token: credentialResponse.credential,
         }

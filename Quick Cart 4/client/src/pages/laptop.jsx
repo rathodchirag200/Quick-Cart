@@ -7,10 +7,11 @@ import { Navigate, useNavigate } from "react-router-dom";
 export const Laptop  = () => {
   const [products, setProducts] = useState([]);
   const naviagate = useNavigate();
+  const API = import.meta.env.VITE_API_URL;
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/products");
+      const res = await axios.get(`${API}/api/products`);
        const headphoneProducts = res.data.products.filter(product => product.category === "Laptop");
       setProducts(headphoneProducts.slice(0,50));
     } catch (err) {
@@ -58,7 +59,7 @@ export const Laptop  = () => {
             onClick={()=> Gotoproduct(item._id)}
             className="cards3 w-full h-[180px] flex items-center justify-center bg-gray-100 rounded-lg overflow-hidden">
               <img
-                src={`http://localhost:3000/${item.images[0]}`}
+                src={`${API}/${item.images[0]}`}
                 alt={item.name}
                 className=" h-full object-contain 
                           transition-transform duration-300 ease-in-out

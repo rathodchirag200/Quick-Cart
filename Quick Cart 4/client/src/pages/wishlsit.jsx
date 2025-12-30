@@ -10,10 +10,11 @@ export const Wishlist = () => {
   const navigate = useNavigate();
   const { wishlist, toggleWishlist } = useContext(WishlistContext);
   const { token } = useContext(AuthContext);
+  const API = import.meta.env.VITE_API_URL;
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/mywishlist", {
+      const res = await axios.get(`${API}/api/mywishlist`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

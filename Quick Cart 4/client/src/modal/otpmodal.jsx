@@ -13,6 +13,7 @@ export const Otpmodal = ({ email }) => {
   });
 
   const navigate = useNavigate();
+  const API = import.meta.env.VITE_API_URL;
 
   const handlechange = (e) => {
     const { name, value } = e.target;
@@ -36,7 +37,7 @@ export const Otpmodal = ({ email }) => {
     }
 
     try {
-      const res = await axios.post("http://localhost:3000/api/verifyotp", {
+      const res = await axios.post(`${API}/api/verifyotp`, {
         email,
         otp: finalOtp,
       });
@@ -59,7 +60,7 @@ export const Otpmodal = ({ email }) => {
 
   const handleresend = async() =>{
     try{
-      const res = await axios.post("http://localhost:3000/api/resend-otp",{
+      const res = await axios.post(`${API}/api/resend-otp`,{
        email
       });
       

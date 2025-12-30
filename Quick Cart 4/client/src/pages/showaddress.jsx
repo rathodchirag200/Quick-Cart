@@ -8,10 +8,11 @@ export const Showaddress = () => {
   const [loading, setLoading] = useState(true);
   const { token } = useContext(AuthContext);
   const navigate = useNavigate();
+  const API = import.meta.env.VITE_API_URL;
 
   const fetchAddresses = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/getaddress", {
+      const res = await axios.get(`${API}/api/getaddress`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

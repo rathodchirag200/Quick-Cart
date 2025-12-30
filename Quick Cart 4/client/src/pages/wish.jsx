@@ -7,6 +7,7 @@ import { WishlistContext } from "../context/WishlistContext"; // adjust path
 export const Shop = () => {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
+  const API = import.meta.env.VITE_API_URL;
 
 
   const { toggleWishlist, isInWishlist } = useContext(WishlistContext);
@@ -14,7 +15,7 @@ export const Shop = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/products");
+      const res = await axios.get(`${API}/api/products`);
       const bestproducts = res.data.products;
       setProducts(bestproducts);
     } catch (err) {
@@ -60,7 +61,7 @@ export const Shop = () => {
               className="cards3 w-full h-[180px] flex items-center justify-center bg-gray-100 rounded-lg overflow-hidden cursor-pointer"
             >
               <img
-                src={`http://localhost:3000/${item.images[0]}`}
+                src={`${API}/${item.images[0]}`}
                 alt={item.name}
                 className="object-contain transition-transform duration-300 ease-in-out hover:scale-110 w-[150px] h-[150px]"
               />

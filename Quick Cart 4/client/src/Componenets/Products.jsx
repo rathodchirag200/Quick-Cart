@@ -8,13 +8,14 @@ export const Products = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setisLoading] = useState(true);
   const navigate = useNavigate();
+  const API = import.meta.env.VITE_API_URL;
 
   const { wishlist, toggleWishlist } = useContext(WishlistContext);
 
   const fetchProducts = async () => {
     setisLoading(true);
     try {
-      const res = await axios.get("http://localhost:3000/api/products");
+      const res = await axios.get(`${API}/api/products`);
       const bestproducts = res.data.products;
       setProducts(bestproducts.slice(0, 5));
     } catch (err) {

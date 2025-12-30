@@ -5,6 +5,7 @@ import { AuthContext } from "../context/authcontext";
 
 export const Profile = () => {
   const [user, setUser] = useState(null);
+  const API = import.meta.env.VITE_API_URL;
 
   const navigate = useNavigate();
   const { logout} = useContext(AuthContext);
@@ -21,7 +22,7 @@ export const Profile = () => {
         return;
       }
 
-      const res = await axios.get("http://localhost:3000/api/currentuser", {
+      const res = await axios.get(`${API}/api/currentuser`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

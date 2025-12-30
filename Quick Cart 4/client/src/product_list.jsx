@@ -13,12 +13,13 @@ export const Product_list = () => {
   const [itemsPerPage] = useState(5);
   const [selectedProductId, setSelectedProductId] = useState(null);
   const token = localStorage.getItem("adminToken");
+  const API = import.meta.env.VITE_API_URL;
 
   const fetchProducts = async () => {
     setisLoading(true);
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/products?page=${currentPage}&limit=${itemsPerPage}`
+        `${API}/api/products?page=${currentPage}&limit=${itemsPerPage}`
       );
       setProducts(response.data.products);
       setTotalPages(response.data.totalPages);
@@ -37,7 +38,7 @@ export const Product_list = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/products/${id}`, {
+      await axios.delete(`${API}/api/products/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

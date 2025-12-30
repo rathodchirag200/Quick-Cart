@@ -12,6 +12,7 @@ export const Details = () => {
   const { user } = useContext(AuthContext);
   const { id } = useParams();
   const navigate = useNavigate();
+  const API = import.meta.env.VITE_API_URL;
 
   const [product, setProduct] = useState(null);
   const [selectedImage, setSelectedImage] = useState("");
@@ -23,7 +24,7 @@ export const Details = () => {
 
   const fetchProduct = async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/api/products/${id}`);
+      const res = await axios.get(`${API}/api/products/${id}`);
       setProduct(res.data.product);
       setSelectedImage(res.data.product.images[0]);
     } catch (error) {

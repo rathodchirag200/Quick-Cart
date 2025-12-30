@@ -10,6 +10,7 @@ export const Cart = () => {
   const { cart, addToCart, removeFromCart, decreaseQuantity, clearCart } =
     useContext(CartContext);
   const { token } = useContext(AuthContext);
+  const API = import.meta.env.VITE_API_URL;
 
   const [address, setAddress] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState(null);
@@ -40,7 +41,7 @@ export const Cart = () => {
 
   const fetchAddress = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/getaddress", {
+      const res = await axios.get(`${API}/api/getaddress`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setAddress(res.data.addresses);
@@ -67,7 +68,7 @@ export const Cart = () => {
 
     try {
       const orderRes = await axios.post(
-        "http://localhost:3000/api/orders/create",
+        `${API}/api/orders/create`,
         {
           address: selectedAddress,
           items: cartItems.map((p) => ({
@@ -85,7 +86,7 @@ export const Cart = () => {
       const order = orderRes.data.order;
 
       const paymentRes = await axios.post(
-        "http://localhost:3000/api/payment/create",
+        `${API}/api/payment/create`,
         { amount: total, orderId: order._id },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -101,7 +102,7 @@ export const Cart = () => {
         order_id: razorpayOrderId,
         handler: async function (response) {
           await axios.post(
-            "http://localhost:3000/api/payment/verify",
+            `${API}/api/payment/verify`,
             {
               orderId: order._id,
               razorpayOrderId,

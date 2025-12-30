@@ -10,6 +10,7 @@ export const ForgotPassword = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { setForgotEmail } = useContext(AuthContext);
+  const API = import.meta.env.VITE_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,7 +18,7 @@ export const ForgotPassword = () => {
     try {
       setLoading(true);
 
-      await axios.post("http://localhost:3000/api/forggot-password", { email });
+      await axios.post(`${API}/api/forggot-password`, { email });
 
       setForgotEmail(email);
 

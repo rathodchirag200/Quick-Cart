@@ -11,6 +11,7 @@ export const Adminlogin = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const API = import.meta.env.VITE_API_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -21,7 +22,7 @@ export const Adminlogin = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/admin/login",
+        `${API}/api/admin/login`,
         {
           email,
           password,
