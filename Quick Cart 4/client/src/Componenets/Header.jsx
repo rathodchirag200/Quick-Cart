@@ -101,7 +101,7 @@ export const Header = () => {
                     onClick={() => setDropdownOpen(false)}
                     className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition"
                   >
-                    <img src="../../public/address.png" className="w-5 h-5" />
+                    <img src=".//address.png" className="w-5 h-5" />
                     <span>Address</span>
                   </NavLink>
 

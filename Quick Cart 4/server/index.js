@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 });
 
 app.use(cors({
-  origin: ["http://localhost:5173", "*"],
+  origin: ["http://localhost:5173","https://quick-cart2-beta.vercel.app"],
   methods: "GET,POST,PUT,DELETE"
 }));
 app.use(bodyParser.json());

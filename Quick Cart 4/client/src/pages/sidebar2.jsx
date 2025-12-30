@@ -35,7 +35,7 @@ export const Sidebar2 = ({ isOpen, toggleSidebar }) => {
             <span>Orders</span>
           </NavLink>
              <NavLink to="/admin/users" className={linkClass} onClick={toggleSidebar}>
-            <img src="../../public/account2.png" alt="Orders" className="w-6 h-6" />
+            <img src="./account2.png" alt="Orders" className="w-6 h-6" />
             <span>Manage Users</span>
           </NavLink>
         </nav>
@@ -56,7 +56,7 @@ export const Sidebar2 = ({ isOpen, toggleSidebar }) => {
             <span>Orders</span>
           </NavLink>
              <NavLink to="/admin/users" className={linkClass} onClick={toggleSidebar}>
-            <img src="../../public/account2.png" alt="Orders" className="w-6 h-6" />
+            <img src="./account2.png" alt="Orders" className="w-6 h-6" />
             <span>Manage Users</span>
           </NavLink>
         </nav>

@@ -193,7 +193,7 @@ export const Home = () => {
               ))}
               <label className="relative w-[150px] h-[85px] border border-dashed border-gray-400 rounded bg-gray-100 flex items-center justify-center cursor-pointer">
                 <span>
-                  <img src="../public/upload area.png" alt="" />
+                  <img src="./upload area.png" alt="" />
                 </span>
                 <input
                   type="file"

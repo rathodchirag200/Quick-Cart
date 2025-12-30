@@ -8,7 +8,7 @@ export const Popular = () => {
 
         <div className="relative  overflow-hidden group">
           <img
-            src={"../../public/girl1.png"}
+            src={"./girl1.png"}
             className="w-full  object-cover group-hover:scale-105 duration-500"
             alt="girl1"
           />
@@ -25,7 +25,7 @@ export const Popular = () => {
             <NavLink to={"/headphone"}>
               <button className="bg-orange-500 hover:bg-orange-600 px-6 py-3  rounded-lg font-semibold text-white text-lg flex items-center gap-2">
               <span>Buy Now</span>
-              <img src="../../public/buy.svg" alt=""/>
+              <img src="./buy.svg" alt=""/>
             </button>
             </NavLink>
             
@@ -35,7 +35,7 @@ export const Popular = () => {
 
         <div className="relative  overflow-hidden group">
           <img
-            src={"../../public/girl2.png"} 
+            src={"./girl2.png"} 
             className="w-full object-cover group-hover:scale-105 duration-500"
             alt="girl2"
           />
@@ -52,7 +52,7 @@ export const Popular = () => {
             <NavLink to={"/buds"}>
               <button className="bg-orange-500 hover:bg-orange-600 px-6 py-3  rounded-lg font-semibold text-white text-lg flex items-center gap-2">
               <span>Buy Now</span>
-              <img src="../../public/buy.svg" alt=""/>
+              <img src="./buy.svg" alt=""/>
             </button>
             </NavLink>
           </div>
@@ -60,7 +60,7 @@ export const Popular = () => {
 
         <div className="relative  overflow-hidden group">
           <img
-            src={"../../public/boys.png"} 
+            src={"./boys.png"} 
             className="w-full object-cover group-hover:scale-105 duration-500"
             alt="boy"
           />
@@ -77,7 +77,7 @@ export const Popular = () => {
              <NavLink to={"/laptop"}>
               <button className="bg-orange-500 hover:bg-orange-600 px-6 py-3  rounded-lg font-semibold text-white text-lg flex items-center gap-2">
               <span>Buy Now</span>
-              <img src="../../public/buy.svg" alt=""/>
+              <img src="./buy.svg" alt=""/>
             </button>
             </NavLink>
           </div>

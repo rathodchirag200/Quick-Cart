@@ -178,14 +178,14 @@ export const Cart = () => {
                   disabled={item.quantity === 1}
                   className="px-3 py-2"
                 >
-                  <img src="../../public/minus.png" className="w-5 " alt=""/>
+                  <img src="./minus.png" className="w-5 " alt=""/>
                 </button>
                 <span className="px-4">{item.quantity}</span>
                 <button
                   onClick={() => addToCart(item.productId)}
                   className="px-3 py-2"
                 >
-                <img src="../../public/plus.png" className="w-5" alt=""/>
+                <img src="./plus.png" className="w-5" alt=""/>
                 </button>
               </div>
 
