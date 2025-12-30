@@ -6,7 +6,7 @@ import { Home } from "./home";
 import { Product_list } from "./product_list";
 import { Orders } from "./orders";
 import { Adminlayout } from "./Layouts/Adminlayout";
-import { Userlayout } from "./Layouts/userlayout";
+import { Userlayout } from "./Layouts/Userlayout";
 import { Dashboard } from "./pages/Dashboard";
 import { Shop } from "./pages/Shop";
 import { Product_details } from "./pages/daetails";
