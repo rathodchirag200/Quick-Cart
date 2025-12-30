@@ -9,7 +9,6 @@ import {
 } from "@react-pdf/renderer";
 
 
-import logo from "./logo.svg";
 
 const sellerInfo = {
   name: "Your Business Name",
