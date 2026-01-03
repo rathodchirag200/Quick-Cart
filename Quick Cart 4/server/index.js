@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 const bodyParser = require('body-parser');
-const app = express(); 
+const app = express();
 const PORT = process.env.PORT || 5000;
 const cors = require('cors');
 const router = require('./routes/products.routes')
@@ -22,20 +22,20 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 });
 
 app.use(cors({
-  origin: ["http://localhost:5173","https://quick-cart2-beta.vercel.app"],
+  origin: ["https://quick-cart-alpha-beige.vercel.app"],
   methods: "GET,POST,PUT,DELETE"
 }));
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/api" , router);
+app.use("/api", router);
 app.use("/api", adminroutes);
-app.use("/api" , userrouter)
-app.use("/api" , cartroutes)
-app.use("/api" , orderroutes)
-app.use("/api" , paymentroutes);
-app.use("/api" , addressroutes);
-app.use("/api" , wishlsitroutes);
+app.use("/api", userrouter)
+app.use("/api", cartroutes)
+app.use("/api", orderroutes)
+app.use("/api", paymentroutes);
+app.use("/api", addressroutes);
+app.use("/api", wishlsitroutes);
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
